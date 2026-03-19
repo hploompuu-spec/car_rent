@@ -1,8 +1,6 @@
-<?php include('config.php'); ?>
-<?php include('header.php'); ?>
+<?php include('../config.php'); ?>
+<?php include('../header.php'); ?>
 
-
-    <!-- /menüü -->
 <!-- sisu -->
 <div class="container">
     <div class="row row-cols-1 row-cols-md-4 g-4">
@@ -20,6 +18,36 @@
     while($rida = mysqli_fetch_assoc($valjund)){       //sikutan vastuse alla
         // var_dump($rida);                            //kuvan testvastuse
 ?>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>John</td>
+      <td>Doe</td>
+      <td>@social</td>
+    </tr>
+  </tbody>
+</table>
     <div class="col">
         <div class="card">
         <img src="https://loremflickr.com/400/250/<?php echo str_replace(" ","", $rida["mark"]); ?>" class="card-img-top" alt="<?php echo $rida["mark"]; ?>">
