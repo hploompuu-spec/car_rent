@@ -26,14 +26,14 @@
       <th scope="col">#</th>
       <th scope="col">Mark</th>
       <th scope="col">Mudel</th>
-      <th scope="col">Hind</th>
-      <th scope="col">Hind</th>
-      <th scope="col">Hind</th>
-      <th scope="col">Hind</th>
-      <th scope="col">Hind</th>
-      <th scope="col">Hind</th>
-      <th scope="col">Hind</th>
-      <th scope="col">Hind</th>
+      <th scope="col">Mootor</th>
+      <th scope="col">Kütus</th>
+      <th scope="col">Aasta</th>
+      <th scope="col">Käigukast</th>
+      <th scope="col">Istmeid</th>
+      <th scope="col">Märkused</th>
+      <th scope="col">Staatus</th>
+      <th scope="col">Pilt</th>
       <th scope="col">Hind</th>
       <th scope="col">Kustuta</th>
       <th scope="col">Muuda</th>
@@ -48,13 +48,13 @@
       <th scope="row"><?php echo $rida["id"]; ?></th>
       <td><?php echo $rida["mark"]; ?></td>
       <td><?php echo $rida["model"]; ?></td>
-      <td><?php echo $rida["price"]; ?></td>
-      <td><?php echo $rida["price"]; ?></td>
-      <td><?php echo $rida["price"]; ?></td>
-      <td><?php echo $rida["price"]; ?></td>
-      <td><?php echo $rida["price"]; ?></td>
-      <td><?php echo $rida["price"]; ?></td>
-      <td><?php echo $rida["price"]; ?></td>
+      <td><?php echo $rida["engine"]; ?></td>
+      <td><?php echo $rida["fuel"]; ?></td>
+      <td><?php echo $rida["year"]; ?></td>
+      <td><?php echo $rida["transmission"]; ?></td>
+      <td><?php echo $rida["seats"]; ?></td>
+      <td><?php echo $rida["description"]; ?></td>
+      <td><?php echo $rida["status"]; ?></td>
       <td><?php echo $rida["price"]; ?></td>
       <td><?php echo $rida["price"]; ?></td>
       <td><a href="kustuta.php?delid=<?= $rida["id"]; ?>" class="btn btn-danger">Kustuta</a></td>
