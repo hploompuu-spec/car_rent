@@ -1,5 +1,5 @@
 
-# 🚗 Autorent - Veebirakendus
+# 🚗 Autorendi veebirakendus
 
 See on koolitööks olnud ja GitHubist kloonitud PHP-põhine autorendi infosüsteem, mis on seadistatud jooksma Debian Linux serveril.
 
@@ -54,11 +54,11 @@ sudo chown -R www-data:www-data /var/www/html
 sudo chmod -R 755 /var/www/html
 ```
 
-### 4. Andmebaasis seadistamine phpmyadmini kaudu
+### 4. Andmebaasi seadistamine phpmyadmini kaudu
 
 Nüüd avan brauseris `http://(masina ip aadress)/phpmyadmin` ja impordin DB kaustas oleva kõige ajakohasema andmebaasi faili `.sql` fail  vastloodud `car_rent` tabelisse.
 
-### 5. Kontroll, kas andmebaas käivitub
+### 5. Kontrollimine, kas andmebaas käivitub
 
 Kontrollides brauseris `http://(masina ip aadress)` saab veenduda, et andmebaas töötab.
 
@@ -71,14 +71,17 @@ Aadressil `http://(masina ip aadress)/admin` käivitub ka administreerimisleht.
 ### 6. Tabelite lisamine
 Lisan tabelid vastavalt juhendis antud andmetele.
 Kasutajate tabel `users`:
+
 <img width="997" height="242" alt="users2" src="https://github.com/user-attachments/assets/81544373-51ed-4b84-bd03-7509aae0b1b3" />
 
 Broneeringute tabel `reservations`:
+
 <img width="1020" height="248" alt="reservations" src="https://github.com/user-attachments/assets/9c15aaed-16e3-4e44-bb70-1009f4a21adb" />
 
 
 ### 7. Tabelitesse andmete lisamine
 Andmete lisamiseks genereerin veebilehte Mockaroo kasutades vajalikud tabelid nii `users` kui `reservations` tabelite jaoks. Saadud failid kättesaadavad kaustas `DB`. 
 Kausta `users` sisu näeb välja selline:
+
 <img width="1381" height="579" alt="users_tabel" src="https://github.com/user-attachments/assets/3686e015-e7ed-4fb8-87c2-425b71365bc3" />
 
