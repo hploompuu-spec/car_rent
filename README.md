@@ -32,7 +32,7 @@ Kuna GitHub nõuab parooli asemel **Tokenit**, loon GitHubis vajaliku tokeni nin
 
 1.  Liigu veebikausta: `cd /var/www/html`
     
-2.  Eemalda vana index: `sudo rm index.html`
+2.  Eemalda vana index.html faili: `sudo rm index.html`
     
 3.  Klooni projekt (asenda `TOKEN` oma GitHubi Personal Access Tokeniga):
 
