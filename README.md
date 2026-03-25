@@ -85,3 +85,20 @@ Kausta `users` sisu näeb välja selline:
 
 <img width="1381" height="579" alt="users_tabel" src="https://github.com/user-attachments/assets/3686e015-e7ed-4fb8-87c2-425b71365bc3" />
 
+### 8. Andmebaasi koopia ja üleslaadimine GitHubi
+Andmebaasi koopia tegemiseks kaustas `/var/wwww/html/` kasutan käsku:
+```bash
+mysqldump -u hannes -p car_rent > andmebaas.sql
+```
+(selguse mõttes lisatud andmebaasile juurde kuupäev formaadis ppkkaa).
+
+Kõikide muudatuste lisamine käsuga:
+```bash
+git add .
+```
+Enne andmete saatmist saab juurde lisada kommentaari ning failid üles laadida:
+```bash
+git commit -m "Muudetud andmebaasi koopia"
+git push origin main
+```
+
