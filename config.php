@@ -2,7 +2,7 @@
     // Sinu andmed
     $db_server = 'localhost';
     $db_andmebaas = 'car_rent';
-    $db_kasutaja = 'Hannes';
+    $db_kasutaja = 'hannes';
     $db_salasona = 'Passw0rd';
 
     // Ühendus andmebaasiga
