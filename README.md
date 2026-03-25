@@ -68,3 +68,17 @@ Aadressil `http://(masina ip aadress)/admin` käivitub ka administreerimisleht.
 
 <img width="1428" height="827" alt="admin" src="https://github.com/user-attachments/assets/a4ed81c0-4660-4fc8-9b9c-059b345f28f2" />
 
+### 6. Tabelite lisamine
+Lisan tabelid vastavalt juhendis antud andmetele.
+Kasutajate tabel `users`:
+<img width="997" height="242" alt="users2" src="https://github.com/user-attachments/assets/81544373-51ed-4b84-bd03-7509aae0b1b3" />
+
+Broneeringute tabel `reservations`:
+<img width="1020" height="248" alt="reservations" src="https://github.com/user-attachments/assets/9c15aaed-16e3-4e44-bb70-1009f4a21adb" />
+
+
+### 7. Tabelitesse andmete lisamine
+Andmete lisamiseks genereerin veebilehte Mockaroo kasutades vajalikud tabelid nii `users` kui `reservations` tabelite jaoks. Saadud failid kättesaadavad kaustas `DB`. 
+Kausta `users` sisu näeb välja selline:
+<img width="1381" height="579" alt="users_tabel" src="https://github.com/user-attachments/assets/3686e015-e7ed-4fb8-87c2-425b71365bc3" />
+
