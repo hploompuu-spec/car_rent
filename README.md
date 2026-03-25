@@ -61,6 +61,10 @@ Nüüd avan brauseris `http://(masina ip aadress)/phpmyadmin` ja impordin DB kau
 ### 5. Kontroll, kas andmebaas käivitub
 
 Kontrollides brauseris `http://(masina ip aadress)` saab veenduda, et andmebaas töötab.
+
+![veebileht](https://github.com/user-attachments/assets/82cc689d-1f67-47bd-ac3f-7cc6c0d9b691)
+
 Aadressil `http://(masina ip aadress)/admin` käivitub ka administreerimisleht.
 
+<img width="1428" height="827" alt="admin" src="https://github.com/user-attachments/assets/a4ed81c0-4660-4fc8-9b9c-059b345f28f2" />
 
