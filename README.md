@@ -22,7 +22,7 @@ Enne kui kloonin GitHubist andmebaasi, annan järgmiste käskudega andmebaasile 
  ```SQL
 CREATE DATABASE car_rent; 
 CREATE USER 'hannes'@'localhost' IDENTIFIED BY 'Passw0rd';
-GRANT ALL PRIVILEGES ON autorent.* TO 'hannes'@'localhost'; FLUSH PRIVILEGES;
+GRANT ALL PRIVILEGES ON car_rent.* TO 'hannes'@'localhost'; FLUSH PRIVILEGES;
 EXIT;
 ```
 
