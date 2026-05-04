@@ -9,7 +9,7 @@
         echo '<div class="alert alert-warning">Palun logi sisse, et näha oma renditud autosid.</div>';
     } else {
         if ($_SESSION['role'] === 'administraator') {
-            $pealkiri = 'Kõik rendid';
+            $pealkiri = 'Kõik broneeringud';
             $paring = "SELECT r.start_date, r.end_date, r.total_price, r.status, c.mark, c.model, u.email, u.first_name, u.last_name
                        FROM reservations r
                        JOIN cars c ON r.car_id = c.id

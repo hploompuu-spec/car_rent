@@ -32,9 +32,11 @@
                 $_SESSION['role'] = $rida['role'];
                 $_SESSION['user_id'] = $rida['id'];
                 if ($rida['role'] == 'administraator') {
-                    header("Location: index.php");
+                    header("Location: admin/index.php");
+                    exit();
                 } else {
                     header("Location: ../index.php");
+                    exit();
                 }
             }else{
                 $msg = "kasutaja vale";
