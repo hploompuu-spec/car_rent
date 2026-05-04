@@ -20,7 +20,7 @@ if (!isset($_SESSION['tuvastamine']) || $_SESSION['role'] !== 'administraator') 
 <?php
     // sõnumi kuvamine
     if(isset($_GET['msg'])){
-      echo '<div class="alert alert-success" role="alert"> Kõik on hästi! </div>';
+     // echo '<div class="alert alert-success" role="alert"> Kõik on hästi! </div>';
     }
 
 
