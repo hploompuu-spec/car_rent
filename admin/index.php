@@ -29,8 +29,7 @@ if (!isset($_SESSION['tuvastamine']) || $_SESSION['role'] !== 'administraator') 
     if (!empty($_GET["otsi"])) {
         $otsing = $_GET["otsi"];
         $paring .= " WHERE mark LIKE '%".$otsing."%'";
-    } 
-    $paring .= " LIMIT 8";
+    }
     // var_dump($_GET["otsi"]);
 
     $valjund = mysqli_query($yhendus, $paring); //saadan päringu andmebaasi
