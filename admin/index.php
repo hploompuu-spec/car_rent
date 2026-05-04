@@ -63,8 +63,15 @@ if (!isset($_SESSION['tuvastamine']) || $_SESSION['role'] !== 'administraator') 
     ?>
     <?php
             $imgSrc = $rida["image"];
-            if (!preg_match('/^https?:\/\//', $imgSrc) && str_starts_with($imgSrc, '/')) {
+            if (!preg_match('/^https?:\/\//', $imgSrc) && strpos($imgSrc, '/') === 0) {
                 $imgSrc = '/car_rent' . $imgSrc;
+            }
+            $placeholder = 'https://dummyimage.com/50x50/cccccc/000000.png&text=no+img';
+            if (!preg_match('/^https?:\/\//', $imgSrc)) {
+                $localPath = $_SERVER['DOCUMENT_ROOT'] . str_replace('/', DIRECTORY_SEPARATOR, $imgSrc);
+                if (!file_exists($localPath)) {
+                    $imgSrc = $placeholder;
+                }
             }
     ?>
     <tr>
