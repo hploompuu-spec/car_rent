@@ -51,7 +51,6 @@ if (!isset($_SESSION['tuvastamine']) || $_SESSION['role'] !== 'administraator') 
       <th scope="col">Kirjeldus</th>
       <th scope="col">Staatus</th>
       <th scope="col">Hind</th>
-      <th scope="col">Hind</th>
       <th scope="col">Kustuta</th>
       <th scope="col">Muuda</th>
     </tr>
