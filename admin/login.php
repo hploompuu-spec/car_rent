@@ -44,6 +44,7 @@
         <div class="row pt-4 mt-4">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
+                <a href="../index.php" class="btn btn-secondary mb-3">Tagasi</a>
                 <form method="post" action="login.php" autocomplete="off">
                     <div class="mb-3">
                         <label for="u" class="form-label">E-post</label>
