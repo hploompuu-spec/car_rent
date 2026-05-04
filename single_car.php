@@ -8,32 +8,64 @@
 
     <div class="row">
 <?php
-    $id = $_GET['id'];
-    $paring = "SELECT * FROM cars WHERE id=".$id."";
+    $id = (int)($_GET['id'] ?? 0);
+    $paring = "SELECT * FROM cars WHERE id=" . $id;
     $valjund = mysqli_query($yhendus, $paring);
     $rida = mysqli_fetch_assoc($valjund);
-     #print_r($rida);
+
+    $booking_message = '';
+    $booking_alert = '';
+    $start_date = '';
+    $end_date = '';
+
+    $reserved_periods = [];
+    $reservations_query = "SELECT start_date, end_date, status FROM reservations WHERE car_id = $id ORDER BY start_date DESC";
+    $reservations_result = mysqli_query($yhendus, $reservations_query);
+    while ($row = mysqli_fetch_assoc($reservations_result)) {
+        $reserved_periods[] = $row;
+    }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['tuvastamine'])) {
         $start_date = $_POST['start_date'];
         $end_date = $_POST['end_date'];
-        $start = new DateTime($start_date);
-        $end = new DateTime($end_date);
-        $days = $start->diff($end)->days + 1;
-        $total_price = $rida['price'] * $days;
 
-        // get next id
-        $id_query = "SELECT MAX(id) as max_id FROM reservations";
-        $id_result = mysqli_query($yhendus, $id_query);
-        $id_row = mysqli_fetch_assoc($id_result);
-        $next_id = ($id_row['max_id'] ?? 0) + 1;
-
-        $user_id = $_SESSION['user_id'];
-        $insert = "INSERT INTO reservations (id, user_id, car_id, start_date, end_date, total_price, status, created_at) VALUES ($next_id, $user_id, $id, '$start_date', '$end_date', $total_price, 'broneeritud', NOW())";
-        if (mysqli_query($yhendus, $insert)) {
-            echo '<div class="alert alert-success">Auto edukalt renditud!</div>';
+        if (empty($start_date) || empty($end_date)) {
+            $booking_message = 'Palun sisesta nii algus- kui ka lõppkuupäev.';
+            $booking_alert = 'danger';
         } else {
-            echo '<div class="alert alert-danger">Viga rentimisel: ' . mysqli_error($yhendus) . '</div>';
+            $start = new DateTime($start_date);
+            $end = new DateTime($end_date);
+
+            if ($end < $start) {
+                $booking_message = 'Lõppkuupäev peab olema alguskuupäevast hiljem.';
+                $booking_alert = 'danger';
+            } else {
+                $conflict_query = "SELECT id FROM reservations WHERE car_id = $id AND NOT (end_date < '$start_date' OR start_date > '$end_date')";
+                $conflict_result = mysqli_query($yhendus, $conflict_query);
+                if (mysqli_num_rows($conflict_result) > 0) {
+                    $booking_message = 'See periood on juba reserveeritud. Palun vali teine aeg.';
+                    $booking_alert = 'danger';
+                } else {
+                    $days = $start->diff($end)->days + 1;
+                    $total_price = $rida['price'] * $days;
+
+                    $id_query = "SELECT MAX(id) as max_id FROM reservations";
+                    $id_result = mysqli_query($yhendus, $id_query);
+                    $id_row = mysqli_fetch_assoc($id_result);
+                    $next_id = ($id_row['max_id'] ?? 0) + 1;
+
+                    $user_id = $_SESSION['user_id'];
+                    $insert = "INSERT INTO reservations (id, user_id, car_id, start_date, end_date, total_price, status, created_at) VALUES ($next_id, $user_id, $id, '$start_date', '$end_date', $total_price, 'broneeritud', NOW())";
+                    if (mysqli_query($yhendus, $insert)) {
+                        $booking_message = 'Auto edukalt renditud!';
+                        $booking_alert = 'success';
+                        $reserved_periods[] = ['start_date' => $start_date, 'end_date' => $end_date, 'status' => 'broneeritud'];
+                    } else {
+                        $booking_message = 'Viga rentimisel: ' . mysqli_error($yhendus);
+                        $booking_alert = 'danger';
+                    }
+                }
+            }
         }
     }
 ?>
@@ -46,15 +78,46 @@
             <p>Käigukast:  <?php echo $rida["transmission"]; ?></p>
             <p>Istmed:  <?php echo $rida["seats"]; ?></p>
             <p class="fs-5">Hind:  <?php echo $rida["price"]; ?> €/päev</p>
+
+            <?php if (!empty($booking_message)): ?>
+                <div class="alert alert-<?php echo $booking_alert; ?>"><?php echo $booking_message; ?></div>
+            <?php endif; ?>
+
+            <?php if (!empty($reserved_periods)): ?>
+                <div class="mb-4">
+                    <h5>Reserveeritud ajavahemikud</h5>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Algus</th>
+                                <th>Lõpp</th>
+                                <th>Staatus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($reserved_periods as $period): ?>
+                            <tr class="table-danger">
+                                <td><?php echo $period['start_date']; ?></td>
+                                <td><?php echo $period['end_date']; ?></td>
+                                <td><?php echo $period['status']; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            <?php else: ?>
+                <div class="alert alert-info mb-4">Sellel autol pole veel broneeringuid.</div>
+            <?php endif; ?>
+
             <?php if (isset($_SESSION['tuvastamine'])): ?>
                 <form method="post">
                     <div class="mb-3">
                         <label for="start_date" class="form-label">Alguskuupäev</label>
-                        <input type="date" class="form-control" id="start_date" name="start_date" required>
+                        <input type="date" class="form-control" id="start_date" name="start_date" value="<?php echo htmlspecialchars($start_date); ?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="end_date" class="form-label">Lõppkuupäev</label>
-                        <input type="date" class="form-control" id="end_date" name="end_date" required>
+                        <input type="date" class="form-control" id="end_date" name="end_date" value="<?php echo htmlspecialchars($end_date); ?>" required>
                     </div>
                     <button type="submit" class="btn btn-dark w-100">Rendi auto</button>
                 </form>

@@ -20,9 +20,11 @@
         <li class="nav-item">
           <a class="nav-link active" href="index.php">Home</a>
         </li>
+        <?php if (!empty($_SESSION['tuvastamine'])): ?>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="my_rentals.php">Minu rendid</a>
         </li>
+        <?php endif; ?>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>

@@ -31,7 +31,11 @@
                 $_SESSION['tuvastamine'] = 'misiganes';
                 $_SESSION['role'] = $rida['role'];
                 $_SESSION['user_id'] = $rida['id'];
-                header("Location: index.php");
+                if ($rida['role'] == 'administraator') {
+                    header("Location: index.php");
+                } else {
+                    header("Location: ../index.php");
+                }
             }else{
                 $msg = "kasutaja vale";
             }
