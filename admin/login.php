@@ -45,11 +45,11 @@
             <div class="col-sm-4">
                 <form method="post" action="login.php" autocomplete="off">
                     <div class="mb-3">
-                        <label for="u" class="form-label">Username</label>
+                        <label for="u" class="form-label">E-post</label>
                         <input name="user" type="text" class="form-control" id="u">
                     </div>
                     <div class="mb-3">
-                        <label for="p" class="form-label">Password</label>
+                        <label for="p" class="form-label">Parool</label>
                         <input name="password" type="password" class="form-control" id="p" >
                     </div>
                     <button type="submit" class="btn btn-primary">Logi sisse</button>
