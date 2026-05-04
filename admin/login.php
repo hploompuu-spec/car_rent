@@ -21,7 +21,7 @@
         $password = $_POST['password'];
 
         //kasutaja andmebaasist
-        $paring = "SELECT email as user, password_hash as password, role FROM users WHERE email='".$uname."'";
+        $paring = "SELECT id, email as user, password_hash as password, role FROM users WHERE email='".$uname."'";
         $valjund = mysqli_query($yhendus, $paring);
         $rida = mysqli_fetch_assoc($valjund);
 
@@ -30,6 +30,7 @@
             if ($uname== $rida['user'] && password_verify($password, $hash)) {
                 $_SESSION['tuvastamine'] = 'misiganes';
                 $_SESSION['role'] = $rida['role'];
+                $_SESSION['user_id'] = $rida['id'];
                 header("Location: index.php");
             }else{
                 $msg = "kasutaja vale";
