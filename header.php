@@ -18,7 +18,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <?php
         $currentScript = $_SERVER['SCRIPT_NAME'] ?? '';
         $isAdminPage = strpos($currentScript, '/admin/') !== false;
-        $reservationsLabel = (!empty($_SESSION['role']) && $_SESSION['role'] === 'administraator') ? 'Kõik broneeringud' : 'Minu broneeringud';
+        $reservationsLabel = (!empty($_SESSION['role']) && $_SESSION['role'] === 'administraator') ? 'Broneeringud' : 'Broneeringud';
     ?>
     <a class="navbar-brand" href="/car_rent/index.php">Autorent</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

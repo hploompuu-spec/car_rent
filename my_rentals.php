@@ -4,7 +4,7 @@
 <!-- sisu -->
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2>Minu broneeringud</h2>
+        <h2>Broneeringud</h2>
         <button type="button" class="btn btn-secondary" onclick="history.back();">Tagasi</button>
     </div>
     <?php
