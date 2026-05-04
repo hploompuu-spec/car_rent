@@ -64,7 +64,7 @@ if (!isset($_SESSION['tuvastamine']) || $_SESSION['role'] !== 'administraator') 
     ?>
     <?php
             $imgSrc = $rida["image"];
-            if (!preg_match('/^https?:\/\//', $imgSrc) && strpos($imgSrc, '/') === 0) {
+            if (!preg_match('/^https?:\/\//', $imgSrc) && str_starts_with($imgSrc, '/')) {
                 $imgSrc = '/car_rent' . $imgSrc;
             }
     ?>

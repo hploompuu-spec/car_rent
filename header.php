@@ -11,23 +11,33 @@
     <!-- menüü -->
       <nav class="navbar navbar-expand-lg bg-body-tertiary mb-4">
   <div class="container">
-    <a class="navbar-brand" href="index.php">Autorent</a>
+    <?php
+        $currentScript = $_SERVER['SCRIPT_NAME'] ?? '';
+        $isAdminPage = strpos($currentScript, '/admin/') !== false;
+        $reservationsLabel = (!empty($_SESSION['role']) && $_SESSION['role'] === 'administraator') ? 'Kõik broneeringud' : 'Minu broneeringud';
+    ?>
+    <a class="navbar-brand" href="/car_rent/index.php">Autorent</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" href="index.php">Pealehele</a>
+          <a class="nav-link active" href="/car_rent/index.php">Pealehele</a>
         </li>
+        <?php if ($isAdminPage): ?>
+        <li class="nav-item">
+          <a class="nav-link" href="/car_rent/admin/index.php">Admin. pealehele</a>
+        </li>
+        <?php endif; ?>
         <?php if (!empty($_SESSION['tuvastamine'])): ?>
         <li class="nav-item">
-          <a class="nav-link" href="/car_rent/my_rentals.php">Minu broneeringud</a>
+          <a class="nav-link" href="/car_rent/my_rentals.php"><?php echo $reservationsLabel; ?></a>
         </li>
         <?php endif; ?>
 
       </ul>
-      <form class="d-flex" role="search" method="get" action="index.php">
+      <form class="d-flex" role="search" method="get" action="/car_rent/index.php">
         <input class="form-control me-2" type="search" placeholder="Otsi autot" aria-label="Search" name="otsi">
         <button class="btn btn-outline-success" type="submit">Otsi</button>
       </form>
