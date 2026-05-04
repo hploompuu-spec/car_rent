@@ -1,5 +1,6 @@
 <?php include('../config.php'); ?>
 <?php include('../header.php'); ?>
+<?php include('admin_check.php'); ?>
 
 <?php
     if(!empty($_GET)){
