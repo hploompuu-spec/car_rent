@@ -59,7 +59,7 @@
 
             echo '</tbody></table>';
         } else {
-            echo '<div class="alert alert-info">Pole leitud ühtegi rentimist.</div>';
+            echo '<div class="alert alert-info">Pole leitud ühtegi broneeringut.</div>';
         }
     }
     ?>
