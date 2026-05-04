@@ -3,7 +3,10 @@
 
 <!-- sisu -->
 <div class="container">
-    <h2>Minu broneeringud</h2>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Minu broneeringud</h2>
+        <button type="button" class="btn btn-secondary" onclick="history.back();">Tagasi</button>
+    </div>
     <?php
     if (!isset($_SESSION['tuvastamine'])) {
         echo '<div class="alert alert-warning">Palun logi sisse, et näha oma renditud autosid.</div>';
