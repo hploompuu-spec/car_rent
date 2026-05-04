@@ -37,10 +37,10 @@
         <button class="btn btn-outline-success" type="submit">Otsi</button>
       </form>
       <?php if (!empty($_SESSION['tuvastamine'])): ?>
-        <a href="admin/logout.php" class="ms-4 btn btn-danger">Logi välja</a>
+        <a href="/car_rent/admin/logout.php" class="ms-4 btn btn-danger">Logi välja</a>
       <?php else: ?>
-        <a href="admin/login.php" class="ms-2 btn btn-primary">Logi sisse</a>
-        <a href="register.php" class="ms-2 btn btn-success">Registreeri</a>
+        <a href="/car_rent/admin/login.php" class="ms-2 btn btn-primary">Logi sisse</a>
+        <a href="/car_rent/register.php" class="ms-2 btn btn-success">Registreeri</a>
       <?php endif; ?>
     </div>
   </div>
