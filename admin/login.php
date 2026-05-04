@@ -55,6 +55,8 @@
                     <button type="submit" class="btn btn-primary">Logi sisse</button>
                 </form>
                 <?php echo $msg; ?>
+                <hr>
+                <p class="text-center">Kasutajat pole? <a href="../register.php">Registreeri siin</a></p>
             </div>
             <div class="col-sm-4"></div>
         </div>
