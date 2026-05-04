@@ -22,7 +22,7 @@
         </li>
         <?php if (!empty($_SESSION['tuvastamine'])): ?>
         <li class="nav-item">
-          <a class="nav-link" href="my_rentals.php">Minu rendid</a>
+          <a class="nav-link" href="my_rentals.php">Minu broneeringud</a>
         </li>
         <?php endif; ?>
         <li class="nav-item">

@@ -3,7 +3,7 @@
 
 <!-- sisu -->
 <div class="container">
-    <h2>Minu rendid</h2>
+    <h2>Minu broneeringud</h2>
     <?php
     if (!isset($_SESSION['tuvastamine'])) {
         echo '<div class="alert alert-warning">Palun logi sisse, et näha oma renditud autosid.</div>';
@@ -16,7 +16,7 @@
                        JOIN users u ON r.user_id = u.id
                        ORDER BY r.start_date DESC";
         } else {
-            $pealkiri = 'Minu rendid';
+            $pealkiri = 'Minu broneeringud';
             $user_id = $_SESSION['user_id'];
             $paring = "SELECT r.start_date, r.end_date, r.total_price, r.status, c.mark, c.model
                        FROM reservations r
